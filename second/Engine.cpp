@@ -53,12 +53,12 @@ void Engine::Update(float dealtaTime)
 void Engine::Render()
 {
 	window.clear();
-	groundBox.Draw(window);
-	box.Draw(window);
+	window.draw(groundBox);
+	window.draw(box);
 
 	for (auto& box : boxes)
 	{
-		box.Draw(window);
+		window.draw(box);
 	}
 
 	window.display();
