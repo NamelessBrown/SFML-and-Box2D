@@ -3,10 +3,10 @@
 
 Box::Box(const sf::Vector2f& position, const sf::Vector2f& size, b2World& world, b2BodyType type, sf::Color color)
 {
-	rectShape.setSize(size);
-	rectShape.setPosition(position);
-	rectShape.setOrigin(size / 2.0f);
-	rectShape.setFillColor(color);
+	setSize(size);
+	setPosition(position);
+	setOrigin(size / 2.0f);
+	setFillColor(color);
 
 	b2BodyDef bodyDef;
 	bodyDef.type = type;
@@ -29,11 +29,8 @@ Box::Box(const sf::Vector2f& position, const sf::Vector2f& size, b2World& world,
 
 void Box::Update()
 {
-	rectShape.setPosition(Converter::MetersToPixels(body->GetPosition().x), Converter::MetersToPixels(body->GetPosition().y));
-	rectShape.setRotation(Converter::RadiansToDegrees(body->GetAngle()));
+	setPosition(Converter::MetersToPixels(body->GetPosition().x), Converter::MetersToPixels(body->GetPosition().y));
+	setRotation(Converter::RadiansToDegrees(body->GetAngle()));
 }
 
-void Box::Draw(sf::RenderTarget& target)
-{
-	target.draw(rectShape);
-}
+
