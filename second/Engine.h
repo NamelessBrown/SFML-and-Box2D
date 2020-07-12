@@ -22,10 +22,9 @@ private:
 	static sf::Time Framerate;
 	b2World world;
 	Box box;
+	std::vector<Box> boxes;
 
 	//ground
-	sf::RectangleShape ground;
-	b2Body* groundBody = nullptr;
-	b2Fixture* groundFixture = nullptr;
+	Box groundBox;
 };
 

@@ -7,9 +7,13 @@
 class Box
 {
 public:
-	Box(const sf::Vector2f& position, const sf::Vector2f& size, b2World& world);
+	Box(const sf::Vector2f& position, const sf::Vector2f& size, b2World& world, b2BodyType type = b2_dynamicBody, sf::Color color = sf::Color::Green);
 	void Update();
 	void Draw(sf::RenderTarget& target);
+	sf::RectangleShape GetRect() const
+	{
+		return rectShape;
+	}
 private:
 	sf::RectangleShape rectShape;
 	b2Body* body = nullptr;

@@ -1,14 +1,15 @@
 #include "Box.h"
 #include "Converter.h"
 
-Box::Box(const sf::Vector2f& position, const sf::Vector2f& size, b2World& world)
+Box::Box(const sf::Vector2f& position, const sf::Vector2f& size, b2World& world, b2BodyType type, sf::Color color)
 {
 	rectShape.setSize(size);
 	rectShape.setPosition(position);
 	rectShape.setOrigin(size / 2.0f);
+	rectShape.setFillColor(color);
 
 	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
+	bodyDef.type = type;
 	bodyDef.position.Set(Converter::PixelsToMeters(position.x), Converter::PixelsToMeters(position.y));
 	
 	body = world.CreateBody(&bodyDef);
@@ -20,7 +21,7 @@ Box::Box(const sf::Vector2f& position, const sf::Vector2f& size, b2World& world)
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &shape;
 	fixtureDef.density = 0.3f;
-	fixtureDef.restitution = 0.5f;
+	fixtureDef.restitution = 1.f;
 	fixtureDef.friction = 0.3f;
 
 	fixture = body->CreateFixture(&fixtureDef);
