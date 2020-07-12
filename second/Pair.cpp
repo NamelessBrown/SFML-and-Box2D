@@ -4,11 +4,13 @@
 Pair::Pair(const Box& box1, const Box& box2, b2World& world)
 	:box1(box1), box2(box2)
 {
-	float lenght = 32.f;
+	float lenght = 15.f;
 
 	b2DistanceJointDef jointDef;
 	jointDef.bodyA = &this->box1.GetBody();
 	jointDef.bodyB = &this->box2.GetBody();
+	jointDef.type = b2JointType::e_distanceJoint;
+	jointDef.userData = this;
 
 	jointDef.length = Converter::PixelsToMeters(lenght);
 	jointDef.frequencyHz = 1.f;
@@ -22,15 +24,17 @@ Pair::Pair(const sf::Vector2f& positionBox1, const sf::Vector2f& sizeBox1, const
 	:box1(positionBox1, sizeBox1, world, type, color), box2( positionBox2, sizeBox2, world, type, color)
 {
 
-	float lenght = 32.f;
+	float lenght = 15.f;
 
 	b2DistanceJointDef jointDef;
 	jointDef.bodyA = &this->box1.GetBody();
 	jointDef.bodyB = &this->box2.GetBody();
+	jointDef.type = b2JointType::e_distanceJoint;
+	jointDef.userData = this;
 
 	jointDef.length = Converter::PixelsToMeters(lenght);
 	jointDef.frequencyHz = 1.f;
-	jointDef.dampingRatio = 0.8f;
+	jointDef.dampingRatio = 1.f;
 
 	joint = (b2DistanceJoint*)world.CreateJoint(&(const b2JointDef)jointDef);
 }
