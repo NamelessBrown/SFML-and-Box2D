@@ -141,12 +141,14 @@
   <ItemGroup>
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Pair.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Pair.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
