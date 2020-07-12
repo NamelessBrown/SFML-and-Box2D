@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <box2d/box2d.h>
 #include "Box.h"
+#include "Converter.h"
 
 class Engine
 {
@@ -21,5 +22,10 @@ private:
 	static sf::Time Framerate;
 	b2World world;
 	Box box;
+
+	//ground
+	sf::RectangleShape ground;
+	b2Body* groundBody = nullptr;
+	b2Fixture* groundFixture = nullptr;
 };
 
