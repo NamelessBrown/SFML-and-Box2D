@@ -5,9 +5,12 @@ sf::Time Engine::Framerate = sf::seconds(1.f / 60.f);
 
 Engine::Engine()
 	:window(sf::VideoMode(1280, 720), "second", sf::Style::Close), world(b2Vec2(0.f, 10.f)), box({ 50.f, 50.f }, {25.f, 25.f}, world),
-	groundBox({ 250.f, 700.f }, { static_cast<float>(window.getSize().x), 50.f },  world, b2_staticBody)
+	groundBox({ 250.f, 700.f }, { 2880.f, 50.f },  world, b2_staticBody)
 {
-
+	for (size_t i = 0; i < 300; ++i)
+	{
+		boxes.push_back(Box({ 550.f, 250.f }, { 10.f, 10.f }, world));
+	}
 }
 
 void Engine::Run()
