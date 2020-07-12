@@ -3,7 +3,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <box2d/box2d.h>
-#include "Box.h"
+#include "Pair.h"
 #include "Converter.h"
 
 class Engine
@@ -23,6 +23,7 @@ private:
 	b2World world;
 	Box box;
 	std::vector<Box> boxes;
+	std::vector<Pair> pairBoxes;
 
 	//ground
 	Box groundBox;

@@ -37,6 +37,14 @@ void Engine::HandleEvents()
 			boxes.emplace_back(box);
 		}
 
+		if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Right)
+		{
+			sf::Vector2f mousePosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
+			sf::Color boxColor = { sf::Uint8(rand() % 255), sf::Uint8(rand() % 255), sf::Uint8(rand() % 255), sf::Uint8(255) };
+			Pair pair(mousePosition, { 10.f, 10.f }, mousePosition + sf::Vector2f(50.f, 0.f), { 10.f, 10.f }, world, b2_dynamicBody, boxColor);
+			pairBoxes.emplace_back(pair);
+		}
+
 	}
 }
 
@@ -48,6 +56,12 @@ void Engine::Update(float dealtaTime)
 	{
 		box.Update();
 	}
+
+	for (auto& pair : pairBoxes)
+	{
+		pair.Update();
+	}
+
 }
 
 void Engine::Render()
@@ -59,6 +73,11 @@ void Engine::Render()
 	for (auto& box : boxes)
 	{
 		window.draw(box);
+	}
+
+	for (auto& pair : pairBoxes)
+	{
+		window.draw(pair);
 	}
 
 	window.display();
