@@ -4,8 +4,9 @@
 sf::Time Engine::Framerate = sf::seconds(1.f / 60.f);
 
 Engine::Engine()
-	:window(sf::VideoMode(1280, 720), "second", sf::Style::Close), world(b2Vec2(0.f, 10.f)), box({ 50.f, 50.f }, {25.f, 25.f}, world),
-	groundBox({ 250.f, 700.f }, { 2880.f, 50.f },  world, b2_staticBody)
+	:window(sf::VideoMode(1280, 720), "second", sf::Style::Close), world(b2Vec2(0.f, 10.f)), box({ 50.f, 50.f }, { 25.f, 25.f }, world),
+	groundBox({ 250.f, 700.f }, { 2880.f, 50.f }, world, b2_staticBody),
+	windmill( 500.f, 300.f, world )
 {
 	
 }
@@ -62,6 +63,7 @@ void Engine::Update(float dealtaTime)
 		pair.Update();
 	}
 
+	windmill.Update();
 }
 
 void Engine::Render()
@@ -79,6 +81,8 @@ void Engine::Render()
 	{
 		window.draw(pair);
 	}
+
+	window.draw(windmill);
 
 	window.display();
 }

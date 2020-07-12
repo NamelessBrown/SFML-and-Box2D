@@ -5,6 +5,7 @@
 #include <box2d/box2d.h>
 #include "Pair.h"
 #include "Converter.h"
+#include "Windmill.h"
 
 class Engine
 {
@@ -24,6 +25,7 @@ private:
 	Box box;
 	std::vector<Box> boxes;
 	std::vector<Pair> pairBoxes;
+	Windmill windmill;
 
 	//ground
 	Box groundBox;
